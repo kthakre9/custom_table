@@ -78,7 +78,7 @@ const CustomTable: React.FC<CustomTableProps> = props => {
           </>
         </div>
 
-        <table>
+        <table id="custom_select_table">
           <thead>
             <TableHeader data={newData} selectedRowCount={selectedRowCount} headers={headers} setNewData={setNewData} />
 

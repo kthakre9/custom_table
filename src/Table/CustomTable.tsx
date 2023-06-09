@@ -12,6 +12,7 @@ interface CustomTableProps {
 const CustomTable: React.FC<CustomTableProps> = props => {
   const { data } = props;
   const [newData, setNewData] = useState([] as any[]);
+  const [selectedRowCount, setSelectedRowCount]: [any[], Function] = useState([]);
 
   const headers = Object.keys(
     data.reduce((result, obj) => {
@@ -38,18 +39,35 @@ const CustomTable: React.FC<CustomTableProps> = props => {
     setNewData(updatedData)
   }, []);
 
+  const tempArray: any = [];
+  // run every time there's any data updates
+  useEffect(() => {
+    newData.forEach(({ data, config }) => {
+      if (config.isSelected === true)
+        tempArray.push(data)
+    })
+
+    setSelectedRowCount(tempArray)
+  }, [newData])
+
 
   return (
     <div className="table_wrapper">
+       <div className="table_toolbar_wrapper">
+          <>
+            {selectedRowCount.length > 0 ? selectedRowCount.length : 'None'} Selected
+            <button>Download</button>
+          </>
+        </div>
 
       <table>
         <thead>
-          <TableHeader headers={headers} />
+          <TableHeader data={newData} selectedRowCount={selectedRowCount} headers={headers} setNewData={setNewData}  />
 
         </thead>
 
         <tbody>
-          <TableRow rows={newData} />
+          <TableRow rows={newData} setNewData={setNewData} />
 
         </tbody>
       </table>

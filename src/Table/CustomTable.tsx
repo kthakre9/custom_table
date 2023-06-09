@@ -1,9 +1,11 @@
 //external imports
 import React, { useState, useEffect } from "react";
+import { MdFileDownload } from "react-icons/md";
 
 //internal imports
 import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
+import DialogBox from "../DialogBox";
 
 interface CustomTableProps {
   data: any[];
@@ -13,6 +15,7 @@ const CustomTable: React.FC<CustomTableProps> = props => {
   const { data } = props;
   const [newData, setNewData] = useState([] as any[]);
   const [selectedRowCount, setSelectedRowCount]: [any[], Function] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const headers = Object.keys(
     data.reduce((result, obj) => {
@@ -37,6 +40,7 @@ const CustomTable: React.FC<CustomTableProps> = props => {
       return newRow;
     });
     setNewData(updatedData)
+    // eslint-disable-next-line
   }, []);
 
   const tempArray: any = [];
@@ -48,15 +52,28 @@ const CustomTable: React.FC<CustomTableProps> = props => {
     })
 
     setSelectedRowCount(tempArray)
+    // eslint-disable-next-line
   }, [newData])
 
+  const handleDownload = () => {
+    setIsOpen(true)
+  }
 
   return (
-    <div className="table_wrapper">
-       <div className="table_toolbar_wrapper">
+    <>
+    {(isOpen && selectedRowCount.length > 0) && <DialogBox setIsOpen={setIsOpen} selectedRows={selectedRowCount} />}
+      <div className="table_wrapper">
+        <div className="table_toolbar_wrapper">
           <>
             {selectedRowCount.length > 0 ? selectedRowCount.length : 'None'} Selected
-            <button>Download</button>
+            <button disabled={selectedRowCount.length <= 0} className="table_button" onClick={handleDownload}>
+              <span className="button_icon">
+                <MdFileDownload />
+              </span>
+              <span>
+                Download Selected
+              </span>
+            </button>
           </>
         </div>
 
@@ -71,7 +88,8 @@ const CustomTable: React.FC<CustomTableProps> = props => {
 
         </tbody>
       </table>
-    </div>
+      </div>
+    </>
   );
 };
 

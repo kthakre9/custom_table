@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import TableCell from "./TableCell";
 import TableSelectRow from "./TableSelectRow";
@@ -32,7 +32,6 @@ const TableRow: React.FC<TableRowProps> = props => {
               id={`table-row-${id}`}
               onChange={() => onSelectRow(id)}
               checked={selectedRow?.config?.isSelected}
-            // disabled={}
             />
             <TableCell cells={cells} />
           </tr>

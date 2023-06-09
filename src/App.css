@@ -5,49 +5,11 @@
 h1 {
   text-align: center;
 }
-
 .table_wrapper {
   padding: 0 1rem;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #dddddd;
-}
-
-th {
-  border-bottom: 1px solid #dddddd;
-}
-
-th,
-td {
-  text-align: left;
-  padding: 8px;
-}
-
-tr:hover {
-  background-color: #dddddd;
-}
-
-.table_row_selected {
-  background-color: #dddddd;
-}
-
-.dot {
-  height: 25px;
-  width: 25px;
-  background-color: #afe313;
-  border-radius: 50%;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 5px;
-}
-
-.table_toolbar_wrapper {
   display: flex;
-  align-items: center;
-  margin: 10px;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .dialog_wrapper {
@@ -81,7 +43,7 @@ tr:hover {
   padding: 0.5rem;
 }
 
-.table_button {
+.dialog_button {
   background-color: transparent;
   align-items: center;
   border: none;
@@ -89,23 +51,11 @@ tr:hover {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-}
-
-.table_button:hover {
-  background-color: #dddddd;
-  transition: 0.7s;
-  color: white;
-}
-
-.table_wrapper .table_button {
-  margin-left: 2rem;
-}
-
-.dialog_wrapper .table_button {
   margin-top: 1rem;
 }
 
-.button_icon {
-  margin-right: 5px;
-  vertical-align: middle;
+.dialog_button:hover {
+  background-color: #dddddd;
+  transition: 0.7s;
+  color: white;
 }

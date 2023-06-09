@@ -1,0 +1,27 @@
+.table_toolbar_wrapper {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.table_toolbar_button {
+  background-color: transparent;
+  align-items: center;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 2rem;
+}
+
+.table_toolbar_button:hover {
+  background-color: #dddddd;
+  transition: 0.7s;
+  color: white;
+}
+
+.table_toolbar_button__icon {
+  margin-right: 5px;
+  vertical-align: middle;
+}

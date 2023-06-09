@@ -1,7 +1,7 @@
-import React from "react";
-import CustomTable from "./Table/CustomTable";
-import data from "./data.json";
-import "./App.css";
+import React from 'react';
+import CustomTable from './components/CustomTable';
+import data from './data.json';
+import './App.css';
 
 function App() {
   return (

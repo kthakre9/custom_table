@@ -1,32 +1,29 @@
-import React from "react";
+import React from 'react';
 
 interface TableSelectRowProps {
   ariaLabel?: string;
   checked?: boolean;
-  id: any;
-  name?: string;
+  id: string;
   onChange: Function;
+  disabled?: boolean;
+  className?: string;
 }
 
-const TableSelectRow: React.FC<TableSelectRowProps> = ({
-  id,
-  name,
-  checked,
-  onChange
-}) => {
+const TableSelectRow: React.FC<TableSelectRowProps> = (props) => {
+  const { id, checked, disabled, onChange, className } = props
   return (
     <>
-      <td>
+      <td className={className}>
         <label htmlFor={id} className="label" aria-labelledby={id}></label>
         <input
           type="checkbox"
-          aria-label={id}
+          aria-label={`${id} select row`}
           checked={checked}
           id={id}
-          name={name}
           onChange={(evt) => {
             onChange(evt, { checked: evt.target.checked, id });
           }}
+          disabled={disabled}
         ></input>
       </td>
     </>

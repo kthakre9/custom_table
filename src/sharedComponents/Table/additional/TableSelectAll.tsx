@@ -1,36 +1,30 @@
-import React from "react";
+import React from 'react';
 
 interface TableSelectAllProps {
   checked?: boolean;
   id: string;
-  name?: string;
   onChange: Function;
-  indeterminate: boolean
+  indeterminate: boolean;
+  className?: string;
 }
 
-const TableSelectAll: React.FC<TableSelectAllProps> = ({
-  id,
-  name,
-  checked,
-  onChange,
-  indeterminate
-}) => {
+const TableSelectAll: React.FC<TableSelectAllProps> = (props) => {
+  const { id, checked, onChange, indeterminate, className } = props
   return (
     <>
-      <th>
+      <th className={className}>
         <label htmlFor={id} className="label" aria-labelledby={id}></label>
         <input
           type="checkbox"
-          ref={input => {
+          ref={(input) => {
             if (input) {
               input.indeterminate = indeterminate;
             }
           }}
-          aria-label={id}
+          aria-label="Select all rows"
           checked={checked}
           id={id}
-          name={name}
-          onChange={evt => {
+          onChange={(evt) => {
             onChange(evt, { checked: evt.target.checked, id });
           }}
         ></input>

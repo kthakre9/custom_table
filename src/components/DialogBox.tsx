@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface DialogBoxProps {
     setIsOpen: Function;
@@ -7,13 +7,12 @@ interface DialogBoxProps {
 
 const DialogBox: React.FC<DialogBoxProps> = ({ setIsOpen, selectedRows }) => {
     // check available status on selected rows
-    const downloadfiles: any = []
+    const downloadfiles: any = [];
     selectedRows?.forEach((item) => {
-        if (item.status === 'available') {
-            downloadfiles.push(item)
+        if (item?.status === 'available') {
+            downloadfiles.push(item);
         }
-    })
-
+    });
 
     return (
         <div className="dialog_wrapper">
@@ -21,19 +20,18 @@ const DialogBox: React.FC<DialogBoxProps> = ({ setIsOpen, selectedRows }) => {
                 <h1>Download files</h1>
                 {downloadfiles?.map((item: any) => {
                     return (
-                        <div className="dialog_content">
+                        <div className="dialog_content" key={`${item.device}`}>
                             <div> Device : {item.device} </div>
-                            <div> Path:  {item.path}</div>
+                            <div> Path: {item.path}</div>
                         </div>
-
-                    )
+                    );
                 })}
 
-                {(!downloadfiles || downloadfiles.length === 0) &&
-                    <div>No files available </div>}
+                {(!downloadfiles || downloadfiles.length === 0) && <div>No files available </div>}
 
-                <button className="table_button" onClick={() => setIsOpen(false)}>Close</button>
-
+                <button className="dialog_button" onClick={() => setIsOpen(false)}>
+                    Close
+                </button>
             </div>
         </div>
     );

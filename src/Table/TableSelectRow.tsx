@@ -3,7 +3,6 @@ import React from "react";
 interface TableSelectRowProps {
   ariaLabel?: string;
   checked?: boolean;
-  disabled?: boolean;
   id: any;
   name?: string;
   onChange: Function;
@@ -12,25 +11,22 @@ interface TableSelectRowProps {
 const TableSelectRow: React.FC<TableSelectRowProps> = ({
   id,
   name,
-  ariaLabel,
   checked,
-  disabled,
   onChange
 }) => {
   return (
     <>
       <td>
+        <label htmlFor={id} className="label" aria-labelledby={id}></label>
         <input
           type="checkbox"
-          aria-label={ariaLabel}
+          aria-label={id}
           checked={checked}
           id={id}
           name={name}
-          onChange= {(evt) => {
+          onChange={(evt) => {
             onChange(evt, { checked: evt.target.checked, id });
           }}
-          disabled={disabled}
-          
         ></input>
       </td>
     </>

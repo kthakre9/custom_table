@@ -1,9 +1,7 @@
 import React from "react";
 
 interface TableSelectAllProps {
-  ariaLabel?: string;
   checked?: boolean;
-  disabled?: boolean;
   id: string;
   name?: string;
   onChange: Function;
@@ -13,15 +11,14 @@ interface TableSelectAllProps {
 const TableSelectAll: React.FC<TableSelectAllProps> = ({
   id,
   name,
-  ariaLabel,
   checked,
-  disabled,
   onChange,
   indeterminate
 }) => {
   return (
     <>
       <th>
+        <label htmlFor={id} className="label" aria-labelledby={id}></label>
         <input
           type="checkbox"
           ref={input => {
@@ -29,14 +26,13 @@ const TableSelectAll: React.FC<TableSelectAllProps> = ({
               input.indeterminate = indeterminate;
             }
           }}
-          aria-label={ariaLabel}
+          aria-label={id}
           checked={checked}
           id={id}
           name={name}
           onChange={evt => {
             onChange(evt, { checked: evt.target.checked, id });
           }}
-          disabled={disabled}
         ></input>
       </th>
     </>

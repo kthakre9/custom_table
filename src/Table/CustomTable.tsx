@@ -61,7 +61,8 @@ const CustomTable: React.FC<CustomTableProps> = props => {
 
   return (
     <>
-    {(isOpen && selectedRowCount.length > 0) && <DialogBox setIsOpen={setIsOpen} selectedRows={selectedRowCount} />}
+      <h1>Custom table with selection </h1>
+      {(isOpen && selectedRowCount.length > 0) && <DialogBox setIsOpen={setIsOpen} selectedRows={selectedRowCount} />}
       <div className="table_wrapper">
         <div className="table_toolbar_wrapper">
           <>
@@ -77,17 +78,17 @@ const CustomTable: React.FC<CustomTableProps> = props => {
           </>
         </div>
 
-      <table>
-        <thead>
-          <TableHeader data={newData} selectedRowCount={selectedRowCount} headers={headers} setNewData={setNewData}  />
+        <table>
+          <thead>
+            <TableHeader data={newData} selectedRowCount={selectedRowCount} headers={headers} setNewData={setNewData} />
 
-        </thead>
+          </thead>
 
-        <tbody>
-          <TableRow rows={newData} setNewData={setNewData} />
+          <tbody>
+            <TableRow rows={newData} setNewData={setNewData} />
 
-        </tbody>
-      </table>
+          </tbody>
+        </table>
       </div>
     </>
   );
